@@ -20,3 +20,25 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 	private int direction;
 
 	private int currentColumn, currentRow;
+	
+	public TronPanel() 
+	{
+		arena = new MosaicPanel(ROWS, COLUMNS, BLOCKSIZE, BLOCKSIZE, Color.GRAY, BORDER_WIDTH);
+		message = new JLabel("To Start, Click the Arena", JLabel.CENTER);
+		message.setBackground(Color.LIGHT_GRAY);
+		message.setBorder(BorderFactory.createEmptyBorder(5,0,5,0));
+		JPanel bottom = new JPanel();
+		bottom.setLayout(new BorderLayout());
+		bottom.setBackground(Color.LIGHT_GRAY);
+		setBackground(Color.DARK_GRAY);
+		setLayout(new BorderLayout(3,3));
+		bottom.add(message,BorderLayout.CENTER);
+		add(bottom, BorderLayout.SOUTH);
+		add(arena, BorderLayout.CENTER);
+		setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,3));
+		arena.setGroutingColor(null);
+		arena.addFocusListener(this);
+		arena.addKeyListener(this);
+		arena.addMouseListener(this);
+		message.addMouseListener(this);
+	}
