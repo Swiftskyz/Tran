@@ -11,7 +11,7 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 
 	private Timer timer;
 	
-	private final static int ROWS = 60;   
+	private final static int ROWS = 60;
 	private final static int COLUMNS = 80;
 	private final static int BLOCKSIZE = 10;
 	private final static int BORDER_WIDTH = 5;
