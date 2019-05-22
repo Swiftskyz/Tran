@@ -42,3 +42,29 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 		arena.addMouseListener(this);
 		message.addMouseListener(this);
 	}
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		switch (direction) 
+		{
+		case UP:
+			if (currentRow > 0)
+				currentRow--;
+			break;
+		case DOWN:
+			if (currentRow < ROWS-1)
+				currentRow++;
+			break;
+		case RIGHT:
+			if (currentColumn < COLUMNS-1)
+				currentColumn++;
+			break;
+		case LEFT:
+			if (currentColumn > 0)
+				currentColumn--;
+			break;
+		}
+		arena.setHSBColor(currentRow,currentColumn,Math.random(),1,1);
+	}
+	
+	
