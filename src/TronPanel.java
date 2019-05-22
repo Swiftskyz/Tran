@@ -67,4 +67,17 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 		arena.setHSBColor(currentRow,currentColumn,Math.random(),1,1);
 	}
 	
-	
+	public void keyPressed(KeyEvent e) 
+	{
+		int code = e.getKeyCode();
+		if (code == KeyEvent.VK_LEFT)
+			direction = LEFT;
+		else if (code == KeyEvent.VK_RIGHT)
+			direction = RIGHT;
+		else if (code == KeyEvent.VK_UP)
+			direction = UP;
+		else if (code == KeyEvent.VK_DOWN)
+			direction = DOWN;
+		else if (code == KeyEvent.VK_P)
+			message.requestFocus();
+	}
