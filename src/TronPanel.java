@@ -81,3 +81,21 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 		else if (code == KeyEvent.VK_P)
 			message.requestFocus();
 	}
+	
+	public void focusGained(FocusEvent e) 
+	{
+		arena.setBorder(BorderFactory.createLineBorder(Color.CYAN, BORDER_WIDTH));
+		arena.fill(null);
+		currentColumn = COLUMNS/4*3;
+		currentRow = ROWS/2;
+		direction = UP;
+		arena.setColor(currentRow,currentColumn,255,0,0);
+		direction = NOT_MOVING;
+		message.setText("To PAUSE, Click this Message or Press \"P\"");
+		timer = new Timer(50,this);
+		timer.start();
+	}
+	
+	
+	
+	
