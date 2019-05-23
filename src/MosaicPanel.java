@@ -223,4 +223,17 @@ public class MosaicPanel extends JPanel
 		return true;
 	}
 	
+	public int xCoordToColumnNumber(int x) 
+	{
+		Insets insets = getInsets();
+		if (x < insets.left)
+			return -1;
+		double colWidth = (double)(getWidth()-insets.left-insets.right) / columns;
+		int col = (int)( (x-insets.left) / colWidth);
+		if (col >= columns)
+			return -1;
+		else
+			return col;
+	}
+	
 	
