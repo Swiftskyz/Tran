@@ -62,3 +62,8 @@ public class MosaicPanel extends JPanel
 			redrawMosaic();
 		}
 	}
+	
+	public Color getDefaultColor() 
+	{
+		return defaultColor;
+	}
