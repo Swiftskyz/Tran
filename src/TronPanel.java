@@ -112,5 +112,15 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 			message.requestFocus();
 	}
 	
+	public void mouseClicked(MouseEvent e) {}
+	public void mouseEntered(MouseEvent e) {}
+	public void mouseExited(MouseEvent e) {}
+	public void mouseReleased(MouseEvent e) {}
+	public void keyReleased(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {}
+	
+}
+	
+	
 	
 	
