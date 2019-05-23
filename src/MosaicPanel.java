@@ -117,4 +117,14 @@ public class MosaicPanel extends JPanel
 		}
 	}
 	
+	public int getRowCount() 
+	{
+		return rows;
+	}
+	
+	public int getColumnCount() 
+	{
+		return columns;
+	}
+	
 	
