@@ -156,4 +156,12 @@ public class MosaicPanel extends JPanel
 		}
 	}
 	
+	public void fill(Color c) 
+	{
+		for (int i = 0; i < rows; i++)
+			for (int j = 0; j < columns; j++)
+				grid[i][j] = c;
+		redrawMosaic();      
+	}
+	
 	
