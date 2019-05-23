@@ -312,4 +312,17 @@ public class MosaicPanel extends JPanel
 			repaint(x,y,w,h);
 	}
 	
+	private void drawSquare(int row, int col) 
+	{
+		if (OSI == null)
+			repaint();
+		else {
+			Graphics g = OSI.getGraphics();
+			drawSquare(g,row,col,true);
+			g.dispose();
+		}
+	}
+	
+}
+	
 	
