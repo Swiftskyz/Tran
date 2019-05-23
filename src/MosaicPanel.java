@@ -127,4 +127,12 @@ public class MosaicPanel extends JPanel
 		return columns;
 	}
 	
+	public Color getColor(int row, int col) 
+	{
+		if (row >=0 && row < rows && col >= 0 && col < columns)
+			return grid[row][col];
+		else
+			return null;
+	}
+	
 	
