@@ -236,4 +236,17 @@ public class MosaicPanel extends JPanel
 			return col;
 	}
 	
+	public int yCoordToRowNumber(int y) 
+	{
+		Insets insets = getInsets();
+		if (y < insets.top)
+			return -1;
+		double rowHeight = (double)(getHeight()-insets.top-insets.bottom) / rows;
+		int row = (int)( (y-insets.top) / rowHeight);
+		if (row >= rows)
+			return -1;
+		else
+			return row;
+	}
+	
 	
