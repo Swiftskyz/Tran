@@ -95,3 +95,26 @@ public class MosaicPanel extends JPanel
 	{
 		return alwaysDrawGrouting; 
 	}
+	
+	public void setGridSize(int rows, 
+			int columns, boolean preserveData) 
+	{
+		if (rows > 0 && columns > 0) 
+		{
+			Color[][] newGrid = new Color[rows][columns];
+			if (preserveData) 
+			{
+				int rowMax = Math.min(rows,this.rows);
+				int colMax = Math.min(columns,this.columns);
+				for (int r = 0; r < rowMax; r++)
+					for (int c = 0; c < colMax; c++)
+						newGrid[r][c] = grid[r][c];
+			}
+			grid = newGrid;
+			this.rows = rows;
+			this.columns = columns;
+			redrawMosaic();
+		}
+	}
+	
+	
