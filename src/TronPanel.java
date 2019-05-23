@@ -104,5 +104,13 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 		message.setText("To START, Click the Arena");
 	}
 	
+	public void mousePressed(MouseEvent e) 
+	{
+		if (e.getSource() == arena)
+			arena.requestFocus();
+		else
+			message.requestFocus();
+	}
+	
 	
 	
