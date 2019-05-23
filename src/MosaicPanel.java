@@ -249,4 +249,9 @@ public class MosaicPanel extends JPanel
 			return row;
 	}
 	
+	public BufferedImage getImage() 
+	{
+		return OSI;
+	}
+	
 	
