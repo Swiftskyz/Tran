@@ -345,6 +345,30 @@ public class MosaicPanel extends JPanel
 		return Color.getHSBColor(h,s,b);
 	}
 	
+	public int getRed(int row, int col) 
+	{
+		if (row >=0 && row < rows && col >= 0 && col < columns && grid[row][col] != null)
+			return grid[row][col].getRed();
+		else
+			return defaultColor.getRed();
+	}
+	
+	public int getGreen(int row, int col) 
+	{
+		if (row >=0 && row < rows && col >= 0 && col < columns && grid[row][col] != null)
+			return grid[row][col].getGreen();
+		else
+			return defaultColor.getGreen();
+	}
+	
+	public int getBlue(int row, int col) 
+	{
+		if (row >=0 && row < rows && col >= 0 && col < columns && grid[row][col] != null)
+			return grid[row][col].getBlue();
+		else
+			return defaultColor.getBlue();
+	}
+	
 }
 	
 	

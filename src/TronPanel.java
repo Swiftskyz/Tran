@@ -64,7 +64,7 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 				currentColumn--;
 			break;
 		}
-		arena.setHSBColor(currentRow,currentColumn,Math.random(),1,1);
+		arena.setHSBColor(currentRow,currentColumn,Math.random(),0,1);
 	}
 	
 	public void keyPressed(KeyEvent e) 
