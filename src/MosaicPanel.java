@@ -164,4 +164,12 @@ public class MosaicPanel extends JPanel
 		redrawMosaic();      
 	}
 	
+	public void fill(int red, int green, int blue) 
+	{
+		red = (red < 0)? 0 : ( (red > 255)? 255 : red);
+		green = (green < 0)? 0 : ( (green > 255)? 255 : green);
+		blue = (blue < 0)? 0 : ( (blue > 255)? 255 : blue);
+		fill(new Color(red,green,blue));
+	}
+	
 	
