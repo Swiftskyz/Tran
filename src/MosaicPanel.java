@@ -76,3 +76,8 @@ public class MosaicPanel extends JPanel
 			redrawMosaic();
 		}
 	}
+	
+	public Color getGroutingColor(Color c) 
+	{
+		return groutingColor;
+	}
