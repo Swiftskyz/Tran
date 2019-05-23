@@ -323,6 +323,16 @@ public class MosaicPanel extends JPanel
 		}
 	}
 	
+	public void setHSBColor(int row, int col, 
+			double hue, double saturation, double brightness) 
+	{
+		if (row >=0 && row < rows && col >= 0 && col < columns) 
+		{
+			grid[row][col] = makeHSBColor(hue,saturation,brightness);
+			drawSquare(row,col);
+		}
+	}
+	
 }
 	
 	
