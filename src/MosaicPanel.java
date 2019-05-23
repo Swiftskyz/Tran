@@ -67,3 +67,12 @@ public class MosaicPanel extends JPanel
 	{
 		return defaultColor;
 	}
+	
+	public void setGroutingColor(Color c) 
+	{
+		if (c == null || ! c.equals(groutingColor)) 
+		{
+			groutingColor = c;
+			redrawMosaic();
+		}
+	}
