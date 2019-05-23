@@ -254,4 +254,62 @@ public class MosaicPanel extends JPanel
 		return OSI;
 	}
 	
+	public void paintComponent(Graphics g) 
+	{
+		super.paintComponent(g);
+		if ( (OSI == null) || OSI.getWidth() != getWidth() || OSI.getHeight() != getHeight() ) 
+		{
+			OSI = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+			needsRedraw = true;
+		}
+		if (needsRedraw) 
+		{
+			Graphics OSG = OSI.getGraphics();
+			for (int r = 0; r < rows; r++)
+				for (int c = 0; c < columns; c++)
+					drawSquare(OSG,r,c,false);
+			OSG.dispose();
+			needsRedraw = false;
+		}
+		g.drawImage(OSI,0,0,null);
+	}
+	
+	private void redrawMosaic() 
+	{
+		needsRedraw = true;
+		repaint();
+	}
+	
+	private void drawSquare(Graphics g, int row, int col, boolean callRepaint) 
+	{
+		Insets insets = getInsets();
+		double rowHeight = (double)(getHeight()-insets.left-insets.right) / rows;
+		double colWidth = (double)(getWidth()-insets.top-insets.bottom) / columns;
+		int xOffset = insets.left;
+		int yOffset = insets.top; 
+		int y = yOffset + (int)Math.round(rowHeight*row);
+		int h = Math.max(1, (int)Math.round(rowHeight*(row+1))+yOffset - y);
+		int x = xOffset + (int)Math.round(colWidth*col);
+		int w = Math.max(1, (int)Math.round(colWidth*(col+1))+xOffset - x);
+		Color c = grid[row][col];
+		g.setColor( (c == null)? defaultColor : c );
+		if (groutingColor == null || (c == null && !alwaysDrawGrouting)) 
+		{
+			if (c == null)
+				g.fillRect(x,y,w,h);
+			else
+				g.fill3DRect(x,y,w,h,true);
+		}
+		else {
+			if (c == null)
+				g.fillRect(x+1,y+1,w-2,h-2);
+			else
+				g.fill3DRect(x+1,y+1,w-2,h-2,true);
+			g.setColor(groutingColor);
+			g.drawRect(x,y,w-1,h-1);
+		}
+		if (callRepaint)
+			repaint(x,y,w,h);
+	}
+	
 	
