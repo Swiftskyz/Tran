@@ -78,7 +78,7 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 			direction = UP;
 		else if (code == KeyEvent.VK_DOWN)
 			direction = DOWN;
-		else if (code == KeyEvent.VK_P)
+		else if (code == KeyEvent.VK_SPACE)
 			message.requestFocus();
 	}
 	
@@ -91,11 +91,18 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 		direction = UP;
 		arena.setColor(currentRow,currentColumn,255,0,0);
 		direction = NOT_MOVING;
-		message.setText("To PAUSE, Click this Message or Press \"P\"");
+		message.setText("To PAUSE, Click this Message or Press \"SPACE\"");
 		timer = new Timer(50,this);
 		timer.start();
 	}
 	
+	public void focusLost(FocusEvent e) {
+		arena.setBorder(BorderFactory.createLineBorder(Color.GRAY, BORDER_WIDTH));
+		if (timer != null)
+			timer.stop();
+		timer = null;
+		message.setText("To START, Click the Arena");
+	}
 	
 	
 	
