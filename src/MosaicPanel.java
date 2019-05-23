@@ -192,4 +192,35 @@ public class MosaicPanel extends JPanel
 		return copy;
 	}
 	
+	public boolean restoreColorData(Object data) 
+	{
+		if (data == null || !(data instanceof Color[][]))
+			return false;
+		Color[][] newGrid = (Color[][])data;
+		int newRows = newGrid.length;
+		if (newRows == 0 || newGrid[0].length == 0)
+			return false;
+		int newColumns = newGrid[0].length;
+		for (int r = 1; r < newRows-1; r++)
+			if (newGrid[r].length != newColumns)
+				return false;
+		if (newGrid[newRows-1].length != newColumns+2
+				&& newGrid[newRows-1].length != newColumns+3)
+			return false;
+		if (newGrid[newRows-1][newColumns] == null)
+			return false;
+		rows = newRows;
+		columns = newColumns;
+		grid = new Color[rows][columns];
+		for (int i = 0; i < rows; i++)
+			for (int j = 0; j < columns; j++)
+				grid[i][j] = newGrid[i][j];
+		defaultColor = newGrid[newRows-1][newColumns];
+		setBackground(defaultColor);
+		groutingColor = newGrid[newRows-1][newColumns+1];
+		alwaysDrawGrouting = newGrid[newRows-1].length == 3;
+		redrawMosaic();
+		return true;
+	}
+	
 	
