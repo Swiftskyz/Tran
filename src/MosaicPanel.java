@@ -50,3 +50,15 @@ public class MosaicPanel extends JPanel
 		if (preferredBlockWidth > 0 && preferredBlockHeight > 0)
 			setPreferredSize(new Dimension(preferredBlockWidth*columns + 2*borderWidth, preferredBlockHeight*rows + 2*borderWidth));
 	}
+	
+	public void setDefaultColor(Color c) 
+	{
+		if (c == null)
+			c = Color.black;
+		if (! c.equals(defaultColor)) 
+		{
+			defaultColor = c;
+			setBackground(c);
+			redrawMosaic();
+		}
+	}
