@@ -333,6 +333,18 @@ public class MosaicPanel extends JPanel
 		}
 	}
 	
+	public static Color makeHSBColor(
+			double hue, double saturation, double brightness) 
+	{
+		float h = (float)hue;
+		float s = (float)saturation;
+		float b = (float)brightness;
+		h = (h < 0)? 0 : ( (h > 1)? 1 : h );
+		s = (s < 0)? 0 : ( (s > 1)? 1 : s );
+		b = (b < 0)? 0 : ( (b > 1)? 1 : b );
+		return Color.getHSBColor(h,s,b);
+	}
+	
 }
 	
 	
