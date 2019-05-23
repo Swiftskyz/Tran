@@ -81,3 +81,12 @@ public class MosaicPanel extends JPanel
 	{
 		return groutingColor;
 	}
+	
+	public void setAlwaysDrawGrouting(boolean always) 
+	{
+		if (alwaysDrawGrouting != always) 
+		{
+			alwaysDrawGrouting = always;
+			redrawMosaic();
+		}
+	}
