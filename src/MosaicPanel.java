@@ -135,4 +135,11 @@ public class MosaicPanel extends JPanel
 			return null;
 	}
 	
-	
+	public void setColor(int row, int col, Color c) 
+	{
+		if (row >=0 && row < rows && col >= 0 && col < columns) 
+		{
+			grid[row][col] = c;
+			drawSquare(row,col);
+		}
+	}
