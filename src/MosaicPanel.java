@@ -177,4 +177,19 @@ public class MosaicPanel extends JPanel
 		fill(null);
 	}
 	
+	public Object copyColorData() 
+	{
+		Color[][] copy = new Color[rows][columns];
+		if (alwaysDrawGrouting)
+			copy[rows-1] = new Color[columns+3];
+		else
+			copy[rows-1] = new Color[columns+2];
+		for (int r = 0; r < rows; r++)
+			for (int c = 0; c < columns; c++)
+				copy[r][c] = grid[r][c];
+		copy[rows-1][columns] = defaultColor;
+		copy[rows-1][columns+1] = groutingColor;
+		return copy;
+	}
+	
 	
