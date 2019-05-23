@@ -90,3 +90,8 @@ public class MosaicPanel extends JPanel
 			redrawMosaic();
 		}
 	}
+	
+	public boolean getAlwaysDrawGrouting() 
+	{
+		return alwaysDrawGrouting; 
+	}
