@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class TronPanel extends JPanel implements FocusListener, KeyListener, ActionListener, MouseListener 
 {
@@ -10,6 +12,10 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 	private JLabel message;
 
 	private Timer timer;
+	
+	private Thread thread;
+	
+	private boolean running;
 	
 	private final static int ROWS = 60;
 	private final static int COLUMNS = 80;
@@ -68,6 +74,51 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 		arena.setHSBColor(currentRow, currentColumn,Math.random(),0,1);
 	}
 	
+	public class BodyPart
+	{
+		private int xCoor, yCoor, width, height;
+		
+		public BodyPart(int xCoor, int yCoor, int tileSize)
+		{
+			this.xCoor = xCoor;
+			this.yCoor = yCoor;
+			width = tileSize;
+			height = tileSize;
+		}
+		
+		public void tick()
+		{
+			
+		}
+		
+		public void draw(Graphics g)
+		{
+			g.setColor(Color.YELLOW);
+			g.fillRect(xCoor * width, yCoor * height, width, height);
+		}
+
+		public int getxCoor()
+		{
+			return xCoor;
+		}
+
+		public void setxCoor(int xCoor)
+		{
+			this.xCoor = xCoor;
+		}
+
+		public int getyCoor()
+		{
+			return yCoor;
+		}
+
+		public void setyCoor(int yCoor)
+		{
+			this.yCoor = yCoor;
+		}
+
+	}
+	
 	public void keyPressed(KeyEvent e) 
 	{
 		int code = e.getKeyCode();
@@ -113,6 +164,28 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 			message.requestFocus();
 	}
 	
+	public void stop()
+	{
+		running = false;
+		try
+		{
+			thread.join();
+		}
+		catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	
+	//collision on border 
+	if(xCoor < 0 || xCoor > 49 || yCoor < 0 || yCoor > 49)
+	{
+		System.out.println("Game Over");
+		stop();
+	}
+	}
+	
 	public void mouseClicked(MouseEvent e) {}
 	public void mouseEntered(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}
@@ -121,6 +194,7 @@ public class TronPanel extends JPanel implements FocusListener, KeyListener, Act
 	public void keyTyped(KeyEvent e) {}
 	
 }
+
 	
 	
 	
